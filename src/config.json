@@ -1,6 +1,6 @@
 
 {
-    "APIURL": "https://studentdetialbackend.onrender.com",
+    "APIURL": "https://studentdetail.onrender.com",
     "APIURL_test": "http://localhost:8081"
   
   }

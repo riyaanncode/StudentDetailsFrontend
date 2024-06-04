@@ -815,7 +815,7 @@ const UserList = () => {
 
   const deleteUser = async (email) => {
     try {
-      await axios.post(config.APIURL +" /api/delete", { email: email });
+      await axios.post(config.APIURL+"/api/delete", { email: email });
       fetchUsers(currentPage);
       toast.success("Data delete successful"); // Show success toast
     } catch (error) {
