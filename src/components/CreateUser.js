@@ -126,6 +126,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import config from "../config.json"
 
 const CreateUser = () => {
   const [user, setUser] = useState({
@@ -136,8 +137,8 @@ const CreateUser = () => {
     address: "",
     contactNumber: "",
   });
-  const [createdUsers, setCreatedUsers] = useState([]);
-  const [error, setError] = useState("");
+  const [createdUsers] = useState([]);
+  const [error] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -148,7 +149,7 @@ const CreateUser = () => {
     e.preventDefault();
     try {
       let apiVariableData = await axios.post(
-        "http://localhost:8080/api/create",
+        config.APIURL + "/api/create",
         user
       );
       console.log(apiVariableData);

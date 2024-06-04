@@ -774,6 +774,7 @@ import UpdateUser from "./UpdateUser";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import config from "../config.json"
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
@@ -791,7 +792,7 @@ const UserList = () => {
   const fetchUsers = async (page) => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/api?page=${page}&limit=${itemsPerPage}`
+        config.APIURL + `/api?page=${page}&limit=${itemsPerPage}`
       );
       setUsers(response.data.data);
       setTotalPages(response.data.totalPages);
@@ -814,7 +815,7 @@ const UserList = () => {
 
   const deleteUser = async (email) => {
     try {
-      await axios.post("http://localhost:8080/api/delete", { email: email });
+      await axios.post(config.APIURL +" /api/delete", { email: email });
       fetchUsers(currentPage);
       toast.success("Data delete successful"); // Show success toast
     } catch (error) {

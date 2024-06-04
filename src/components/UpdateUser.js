@@ -232,10 +232,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import config from "../config.json"
 
 const UpdateUser = ({ user, onUpdate }) => {
   const [updatedUser, setUpdatedUser] = useState({ ...user });
-  const [error, setError] = useState("");
+  const [error] = useState("");
 
   useEffect(() => {
     setUpdatedUser({ ...user });
@@ -248,7 +249,7 @@ const UpdateUser = ({ user, onUpdate }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8080/api/update", {
+      await axios.post(config.APIURL + "/api/update", {
         ...updatedUser,
         id: user.id,
       });
